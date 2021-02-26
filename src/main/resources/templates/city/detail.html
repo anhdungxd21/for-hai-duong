@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Thông tin thành phố</h3>
+<p>
+    <a th:href="@{/}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form action="#" th:action="@{/city/save}" th:object="${city}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name Of City</label>
+            <input type="text" th:value="${city.nameCity}" name="nameCity" disabled/>
+        </div>
+        <div>
+            <label>Country</label>
+            <input type="number" th:value="${city.country.name}" name="area" disabled >
+        </div>
+
+        <div>
+            <label>Area</label>
+            <input type="number" th:value="${city.area}" name="area" disabled >
+        </div>
+        <div>
+            <label>Population Data</label>
+            <input type="number" th:value="${city.populationData}" name="populationData" disabled/>
+        </div>
+        <div>
+            <label>GDP City</label>
+            <input type="number" th:value="${city.gdpCity}" name="gdpCity" disabled/>
+        </div>
+
+        <div>
+            <label>description</label>
+            <input type="number" th:value="${city.description}" name="gdpCity" disabled/>
+        </div>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

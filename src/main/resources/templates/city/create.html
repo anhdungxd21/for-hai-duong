@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Add Customer</h3>
+<p>
+    <a th:href="@{/}">
+        Back to customer list
+    </a>
+</p>
+<div id="form">
+    <form  th:object="${city}"
+          method="post" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="nameCity">City: </label>
+            <input id="nameCity" type="text" th:field="${city.nameCity}" name="nameCity"/>
+            <td th:if="${#fields.hasErrors('nameCity')}" th:errors="*{nameCity}">Name Error</td>
+        </div>
+        <div>
+        <label for="country">Country: </label>
+            <select name="country" id="country" th:field="${city.country}">
+                <option th:each="country: ${countryList}" th:value="${country.id}" th:utext="${country.name}"/>
+            </select>
+        </div>
+        <div>
+            <label for="area">Area: </label>
+            <input id="area" type="number" th:field="*{area}" name="area"/>
+            <td th:if="${#fields.hasErrors('area')}" th:errors="*{area}">Name Error</td>
+        </div>
+        <div>
+            <label for="populationData">Population Data</label>
+            <input id="populationData" type="number" th:field="*{populationData}" name="populationData"/>
+            <td th:if="${#fields.hasErrors('populationData')}" th:errors="*{populationData}">Name Error</td>
+        </div>
+        <div>
+            <label for="gdpCity">GDP City</label>
+            <input id="gdpCity" type="number" th:field="*{gdpCity}" name="gdpCity"/>
+        </div>
+        <div>
+            <label for="description">description</label>
+            <textarea id="description" name="description" th:field="*{description}" rows="4" cols="50"/>
+        </div>
+        <input type="submit" value="Save"></input>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

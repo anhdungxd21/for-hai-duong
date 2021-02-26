@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Lists City</h3>
+<p>
+    <a th:href="@{/city/create}">
+        Add new City
+    </a>
+</p>
+
+<table id = "customers">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="row,rowStat : ${cityList}">
+        <td th:text="${rowStat.index + 1}"></td>
+        <td><a th:href="@{/city/detail(id=${row.id})}" th:text="${row.nameCity}"></a></td>
+        <td th:text="${row.country.name}"></td>
+        <td><a th:href="@{/city/edit/{id}(id=${row.getId()})}">edit</a></td>
+        <td><a th:href="@{/city/delete/{id}(id=${row.getId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
